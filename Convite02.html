@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .hidden {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+        .emoji {
+            font-size: 2rem;
+        }
+        .message {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+        .button {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="emoji">🔥💨💨</div>
+    <div class="message" id="initialMessage">Link abriu fumaça subiu...</div>
+
+    <div class="hidden show" id="invitation">
+        <div class="emoji">🎉💨</div>
+        <p class="message">PARABÉNS! VOCÊ ACABA DE RECEBER UM CONVITE PARA FUMAR UM COMIGO</p>
+        <p class="message">LOCAL: todo lugar é lugar</p>
+        <p class="message">Hora: 4:20</p>
+        <button class="button" onclick="acceptInvitation()">Você aceita? Sim</button>
+        <button class="button" onclick="declineInvitation()">Não</button>
+    </div>
+
+    <div class="hidden" id="responseNo">
+        <p class="message">😢 Bob Marley fica triste com uma notícia dessas...</p>
+    </div>
+
+    <div class="hidden" id="responseYes">
+        <p class="message">Vai jogar a inteira? 😏</p>
+        <button class="button" onclick="fullSession()">Sim</button>
+        <button class="button" onclick="noFullSession()">Não</button>
+    </div>
+
+    <div class="hidden" id="fullSession">
+        <p class="message">🎉 Parabéns! Sua presença acaba de ser confirmada.</p>
+    </div>
+
+    <div class="hidden" id="noFullSession">
+        <p class="message">😔 Sem inteira, sem sessão...</p>
+    </div>
+
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('initialMessage').classList.add('hidden');
+                document.getElementById('invitation').classList.remove('hidden');
+            }, 2000);
+        };
+
+        function declineInvitation() {
+            document.getElementById('invitation').classList.add('hidden');
+            document.getElementById('responseNo').classList.remove('hidden');
+        }
+
+        function acceptInvitation() {
+            document.getElementById('invitation').classList.add('hidden');
+            document.getElementById('responseYes').classList.remove('hidden');
+        }
+
+        function fullSession() {
+            document.getElementById('responseYes').classList.add('hidden');
+            document.getElementById('fullSession').classList.remove('hidden');
+        }
+
+        function noFullSession() {
+            document.getElementById('responseYes').classList.add('hidden');
+            document.getElementById('noFullSession').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
